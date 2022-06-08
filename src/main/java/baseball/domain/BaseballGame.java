@@ -69,7 +69,7 @@ public class BaseballGame {
     }
 
     private void ball(String inputNumber) {
-        if (this.answer.contains(inputNumber)) {
+        if (!inputNumber.isEmpty() && this.answer.contains(inputNumber)) {
             this.ballScore++;
         }
     }

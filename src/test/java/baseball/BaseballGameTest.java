@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class BaseballGameTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"713:123:1볼:1스트라이크", "467:469:'':2스트라이크"}, delimiter = ':')
+    @CsvSource(value = {"713:123:1볼:1스트라이크", "467:469:'':2스트라이크", "469:469:'':3스트라이크"}, delimiter = ':')
     void 숫자_야구_게임_실행(String answer, String input, String ball, String strike) {
         BaseballGame baseballGame = new BaseballGame(answer);
         Score score = baseballGame.execute(input);
