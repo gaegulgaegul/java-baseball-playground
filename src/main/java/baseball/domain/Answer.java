@@ -1,18 +1,26 @@
 package baseball.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Answer {
 
     public static String get() {
-        Set<Integer> numberSet = new HashSet<>();
+        List<Integer> numberList = new ArrayList<>();
         do {
-            int random = (int) (Math.random() * 9) + 1;
-            numberSet.add(random);
-        } while (numberSet.size() < 3);
+            addRandomNumber(numberList);
+        } while (numberList.size() < 3);
 
-        return numberSet.stream()
+        return numberList.stream()
                 .map(String::valueOf)
                 .reduce("", (acc, next) -> acc += next);
     }
+
+    private static void addRandomNumber(List<Integer> numberList) {
+        int random = (int) (Math.random() * 9) + 1;
+        if (!numberList.contains(random)) {
+            numberList.add(random);
+        }
+    }
+
 }
