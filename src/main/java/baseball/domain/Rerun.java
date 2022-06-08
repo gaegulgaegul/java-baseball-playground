@@ -2,12 +2,12 @@ package baseball.domain;
 
 import baseball.view.InputView;
 
-public class Confirm {
+public class Rerun {
     private int confirmCode = 99;
 
     public static boolean isRunning() {
-        Confirm confirm = new Confirm();
-        if (confirm.allowCode() == 1) {
+        Rerun rerun = new Rerun();
+        if (rerun.allowCode() == 1) {
             return true;
         }
         return false;
