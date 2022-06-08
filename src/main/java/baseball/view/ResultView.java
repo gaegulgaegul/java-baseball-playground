@@ -4,6 +4,10 @@ import baseball.domain.Score;
 
 public class ResultView {
 
+    public static void print(String message) {
+        System.out.println(message);
+    }
+
     public static void print(Score score) {
         System.out.println(score);
     }
