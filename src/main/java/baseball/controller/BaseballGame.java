@@ -1,23 +1,23 @@
 package baseball.controller;
 
 import baseball.domain.Answer;
-import baseball.domain.BaseballGame;
+import baseball.domain.Scoring;
 import baseball.domain.ConfirmScore;
 import baseball.domain.Rerun;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
-public class NumberBaseballGame {
+public class BaseballGame {
 
-    public void execute() {
+    public void play() {
         do {
             start();
         } while (Rerun.isRunning());
     }
 
     private void start() {
-        BaseballGame baseballGame = new BaseballGame(Answer.get());
-        ConfirmScore confirmScore = new ConfirmScore(baseballGame);
+        Scoring scoring = new Scoring(Answer.get());
+        ConfirmScore confirmScore = new ConfirmScore(scoring);
         do {
             confirmScore.computeScore(InputView.numbers());
         } while (confirmScore.onGoing());

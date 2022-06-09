@@ -4,16 +4,16 @@ import baseball.view.ResultView;
 
 public class ConfirmScore {
 
-    private BaseballGame baseballGame;
+    private Scoring scoring;
     private Score score;
 
-    public ConfirmScore(BaseballGame baseballGame) {
-        this.baseballGame = baseballGame;
+    public ConfirmScore(Scoring scoring) {
+        this.scoring = scoring;
     }
 
     public void computeScore(String numbers) {
         try {
-            this.score = baseballGame.execute(numbers);
+            this.score = scoring.execute(numbers);
             ResultView.print(score);
         } catch (IllegalArgumentException e) {
             ResultView.print(e.getMessage());

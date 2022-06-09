@@ -4,19 +4,19 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BaseballGame {
+public class Scoring {
     private String answer;
 
     private int ballScore;
     private int strikeScore;
 
-    public BaseballGame(String answer) {
+    public Scoring(String answer) {
         this.answer = answer;
     }
 
     public Score execute(String input) {
         validate(input);
-        clear();
+        reset();
         String remainInput = checkStrikeCount(input);
         checkBallCount(remainInput);
         return new Score(this.ballScore, this.strikeScore);
@@ -30,7 +30,7 @@ public class BaseballGame {
         }
     }
 
-    private void clear() {
+    private void reset() {
         this.ballScore = 0;
         this.strikeScore = 0;
     }
