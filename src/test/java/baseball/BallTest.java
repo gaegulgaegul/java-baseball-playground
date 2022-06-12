@@ -10,19 +10,19 @@ public class BallTest {
 
     @Test
     void strike() {
-        BallStatus status = ball.play(new Ball(1, 2));
-        assertThat(status).isEqualTo(BallStatus.STRIKE);
+        PlayStatus status = ball.play(new Ball(1, 2));
+        assertThat(status).isEqualTo(PlayStatus.STRIKE);
     }
 
     @Test
     void ball() {
-        BallStatus status = ball.play(new Ball(2, 2));
-        assertThat(status).isEqualTo(BallStatus.BALL);
+        PlayStatus status = ball.play(new Ball(2, 2));
+        assertThat(status).isEqualTo(PlayStatus.BALL);
     }
 
     @Test
     void nothing() {
-        BallStatus status = ball.play(new Ball(3, 3));
-        assertThat(status).isEqualTo(BallStatus.NOTHING);
+        PlayStatus status = ball.play(new Ball(3, 3));
+        assertThat(status).isEqualTo(PlayStatus.NOTHING);
     }
 }

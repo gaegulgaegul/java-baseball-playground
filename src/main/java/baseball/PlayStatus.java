@@ -1,6 +1,6 @@
 package baseball;
 
-public enum BallStatus {
+public enum PlayStatus {
     BALL, STRIKE, NOTHING;
 
     public boolean isNotNothing() {

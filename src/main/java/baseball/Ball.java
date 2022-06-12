@@ -7,20 +7,27 @@ public class Ball {
     private int ballNumber;
 
     public Ball(int position, int ballNumber) {
+        if (isNotRangeBallNumber(ballNumber)) {
+            throw new IllegalArgumentException("숫자는 1~9 사이를 입력해주세요.");
+        }
         this.position = position;
         this.ballNumber = ballNumber;
     }
 
-    public BallStatus play(Ball answer) {
+    private boolean isNotRangeBallNumber(int ballNumber) {
+        return ballNumber < 1 && ballNumber > 9;
+    }
+
+    public PlayStatus play(Ball answer) {
         if (answer.equals(this)) {
-            return BallStatus.STRIKE;
+            return PlayStatus.STRIKE;
         }
 
         if (answer.matchBallNumber(this.ballNumber)) {
-            return BallStatus.BALL;
+            return PlayStatus.BALL;
         }
 
-        return BallStatus.NOTHING;
+        return PlayStatus.NOTHING;
     }
 
     private boolean matchBallNumber(int ballNumber) {
