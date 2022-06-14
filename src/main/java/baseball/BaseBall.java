@@ -7,26 +7,27 @@ import java.util.stream.Collectors;
 public class BaseBall {
 
     private Answers answers;
-    private int code;
 
     public BaseBall() {
         this.answers = new Answers();
     }
 
     public void play() {
-        do {
-            inning(answers.getBalls());
-            code = InputView.replay();
-        } while(!isShutdown());
+        inning(answers.getBalls());
+        int code = InputView.replay();
+        if (isReplay(code)) {
+            play();
+        }
     }
 
     private void inning(Balls answers) {
-        PlayResult playResult;
-        do {
-            playResult = answers.play(getUserNumbers());
-            ResultView.score(playResult);
-        } while (!playResult.isEndGame());
-        ResultView.endGame();
+        PlayResult playResult = answers.play(getUserNumbers());
+        ResultView.score(playResult);
+        if (playResult.isEndGame()) {
+            ResultView.endGame();
+            return;
+        }
+        inning(answers);
     }
 
     private List<Integer> getUserNumbers() {
@@ -36,8 +37,8 @@ public class BaseBall {
                 .collect(Collectors.toList());
     }
 
-    private boolean isShutdown() {
-        return code == 2;
+    private boolean isReplay(int code) {
+        return code == 1;
     }
 
 }
